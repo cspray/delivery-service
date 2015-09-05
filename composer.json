@@ -1,0 +1,25 @@
+{
+  "name": "cspray/delivery-service",
+  "description": "Abstraction to allow sending intra-process messages within an asynchronous event loop.",
+  "license": "MIT",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/cspray/phpunit-mock-objects"
+    }
+  ],
+  "require-dev": {
+    "phpunit/phpunit": "4.8.6",
+    "phpunit/phpunit-mock-objects": "dev-master"
+  },
+  "autoload": {
+    "psr-0": {
+      "Cspray\\DeliveryService\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-0": {
+      "Cspray\\DeliveryService\\Test\\": "test/"
+    }
+  }
+}
