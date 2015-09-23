@@ -13,12 +13,12 @@
     "phpunit/phpunit-mock-objects": "dev-master"
   },
   "autoload": {
-    "psr-0": {
+    "psr-4": {
       "Cspray\\DeliveryService\\": "src/"
     }
   },
   "autoload-dev": {
-    "psr-0": {
+    "psr-4": {
       "Cspray\\DeliveryService\\Test\\": "test/"
     }
   }
