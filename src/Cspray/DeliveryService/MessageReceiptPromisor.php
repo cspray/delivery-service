@@ -10,7 +10,9 @@ namespace Cspray\DeliveryService;
 
 interface MessageReceiptPromisor {
 
-    public function getMessage() : Message;
+    public function getMessageType() : string;
+
+    public function getMessagePayload() : array;
 
     public function getReceiptPromisor() : ReceiptPromisor;
 

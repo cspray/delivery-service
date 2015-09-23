@@ -10,7 +10,7 @@ namespace Cspray\DeliveryService;
 
 interface Transmitter {
 
-    public function send(Message $message) : Receipt;
+    public function send(string $messageType, array $payload = []) : Receipt;
 
     public function getMessageQueue() : MessageQueue;
 
