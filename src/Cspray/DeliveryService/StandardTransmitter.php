@@ -18,9 +18,9 @@ class StandardTransmitter implements Transmitter {
         $this->queue = $queue ?? new InMemoryMessageQueue();
     }
 
-    public function send(Message $message) : Receipt {
+    public function send(string $messageType, array $payload = []) : Receipt {
         $promisor = $this->promisorFactory->create();
-        $msgReceiptPromisor = $this->getMessageReceiptPromisor($message, $promisor);
+        $msgReceiptPromisor = $this->getMessageReceiptPromisor($messageType, $payload, $promisor);
         $this->queue->enqueue($msgReceiptPromisor);
         return $promisor->getReceipt();
     }
@@ -29,19 +29,25 @@ class StandardTransmitter implements Transmitter {
         return $this->queue;
     }
 
-    private function getMessageReceiptPromisor(Message $message, ReceiptPromisor $receiptPromisor) : MessageReceiptPromisor {
-        return new class($message, $receiptPromisor) implements MessageReceiptPromisor {
+    private function getMessageReceiptPromisor(string $message, array $payload, ReceiptPromisor $receiptPromisor) : MessageReceiptPromisor {
+        return new class($message, $payLoad, $receiptPromisor) implements MessageReceiptPromisor {
 
             private $message;
+            private $payload;
             private $receiptPromisor;
 
-            public function __construct($message, $receiptPromisor) {
+            public function __construct($message, $payload, $receiptPromisor) {
                 $this->message = $message;
+                $this->payload = $payload;
                 $this->receiptPromisor = $receiptPromisor;
             }
 
-            public function getMessage() : Message {
+            public function getMessageType() : string {
                 return $this->message;
+            }
+
+            public function getMessagePayload() : array {
+                return $this->payload;
             }
 
             public function getReceiptPromisor() : ReceiptPromisor {

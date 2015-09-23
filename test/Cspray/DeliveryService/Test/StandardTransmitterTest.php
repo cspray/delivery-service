@@ -27,8 +27,7 @@ class StandardTransmitterTest extends UnitTestCase {
 
         $transmitter = new StandardTransmitter($factory);
 
-        $msg = new GenericMessage('generic');
-        $transmitter->send($msg);
+        $transmitter->send('generic');
 
         $this->assertCount(1, $transmitter->getMessageQueue());
     }
