@@ -30,7 +30,7 @@ class StandardTransmitter implements Transmitter {
     }
 
     private function getMessageReceiptPromisor(string $message, array $payload, ReceiptPromisor $receiptPromisor) : MessageReceiptPromisor {
-        return new class($message, $payLoad, $receiptPromisor) implements MessageReceiptPromisor {
+        return new class($message, $payload, $receiptPromisor) implements MessageReceiptPromisor {
 
             private $message;
             private $payload;
