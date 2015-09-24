@@ -1,5 +1,9 @@
 # Delivery Service Changelog
 
+## v0.2.1
+
+- Fixes typo in StandardTransmitter
+
 ## v0.2.0
 
 - Removes the `Message` interface and implementations
